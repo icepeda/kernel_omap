@@ -92,6 +92,7 @@
 			&mcbsp1_pins
 			&mcbsp2_pins
 			&mcbsp4_pins
+			&dss_hdmi_pins
 			&dmtimer10_pins
 			&hsusbb1_pins
 			&mcpdm_pins
@@ -146,6 +147,14 @@
 			0xf4 (PIN_INPUT | MUX_MODE0)		/*  mcspi1_somi.mcspi1_somi */
 			0xf6 (PIN_INPUT | MUX_MODE0)		/*  mcspi1_simo.mcspi1_simo */
 			0xf8 (PIN_INPUT | MUX_MODE0)		/*  mcspi1_cs0.mcspi1_cs0 */
+		>;
+	};
+
+	dss_hdmi_pins: pinmux_dss_hdmi_pins {
+		pinctrl-single,pins = <
+			0x5a (PIN_INPUT_PULLUP | MUX_MODE0)	/* hdmi_cec.hdmi_cec */
+			0x5c (PIN_INPUT_PULLUP | MUX_MODE0)	/* hdmi_scl.hdmi_scl */
+			0x5e (PIN_INPUT_PULLUP | MUX_MODE0)	/* hdmi_sda.hdmi_sda */
 		>;
 	};
 
@@ -457,4 +466,13 @@
 	interface-type = <1>;
 	mode = <3>;
 	power = <50>;
+};
+
+&dss {
+	status = "ok";
+};
+
+&dsi2 {
+	status = "ok";
+	vdd-supply = <&vcxio>;
 };
